@@ -13,22 +13,17 @@ namespace ConsoleApp1
     {
         static async Task Main(string[] args)
         {
-            using (var Hook = new WebHook("https://discord.com/api/webhooks/886172264880566283/XUt4sxsuVuCeKsIRJ8LEBnU2zf0k5Te3stl1uH4MMv53xavfX8KLK2AAYcLJfn3nEGwr"))
+            string WebhookLink = "WEBHOOK_LINK";    
+        
+            using (var Hook = new WebHook(WebhookLink))
             {
-                Console.WriteLine(await Hook.ExistsAsync() ? "Exists" : "Doesn't exist");
+                Console.WriteLine(await Hook.ExistsAsync() ? "Exists" : "Doesn't exist"); // Exists
                 await Hook.SendAsync("Hello there!");
                 await Hook.DeleteAsync();
-                Console.WriteLine(await Hook.ExistsAsync() ? "Exists" : "Doesn't exist");
+                Console.WriteLine(await Hook.ExistsAsync() ? "Exists" : "Doesn't exist"); // Doesn't exist
             }
 
             Console.ReadLine();
-            
-            /*
-              Output:
-              
-              Exists
-              Doesn't Exist
-            */
         }
     }
 }
